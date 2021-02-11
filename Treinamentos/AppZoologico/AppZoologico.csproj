@@ -183,6 +183,7 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Animal\Index.cshtml" />
+    <Content Include="Views\Animal\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -209,6 +210,10 @@
     <ProjectReference Include="..\Infraestrutura\Infraestrutura.csproj">
       <Project>{91a3def7-aecb-4d08-af59-ce65e6a5295b}</Project>
       <Name>Infraestrutura</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UoW\UdT.csproj">
+      <Project>{deb91b18-1dc0-41f9-869c-8894f0291452}</Project>
+      <Name>UdT</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

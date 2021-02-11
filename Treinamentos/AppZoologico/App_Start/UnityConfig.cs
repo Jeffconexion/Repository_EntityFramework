@@ -5,6 +5,7 @@ using Infraestrutura.Repositorios;
 using System.Web.Mvc;
 using Unity;
 using Unity.Mvc5;
+using UoW.Contratos;
 
 namespace AppZoologico
 {
@@ -22,6 +23,8 @@ namespace AppZoologico
 
             container.RegisterType<AppDataContext, AppDataContext>();
             container.RegisterType<IAnimal, AnimalRepositorio>();
+            container.RegisterType<IUnidadeDeTrabalho, UnidadeDeTrabalho>();
+
 
             DependencyResolver.SetResolver(new UnityDependencyResolver(container));
         }

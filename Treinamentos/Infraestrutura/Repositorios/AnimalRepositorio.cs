@@ -15,19 +15,18 @@ namespace Infraestrutura.Repositorios
         public AnimalRepositorio(AppDataContext banco)
         {
             _banco = banco;
+            
         }
 
         public void Atualizar(Animal animal)
         {
             _banco.Entry<Animal>(animal).State = EntityState.Modified;
-            _banco.SaveChanges();
         }
 
         public void Deletar(int idAnimal)
         {
             var animal = ObterPorId(idAnimal);
             _banco.Animais.Remove(animal);
-            _banco.SaveChanges();
         }
 
         public Animal ObterPorId(int idAnimal)
@@ -47,10 +46,9 @@ namespace Infraestrutura.Repositorios
             return animal;
         }
 
-        public void Salvar(Animal animal)
+        public void Cadastrar(Animal animal)
         {
             _banco.Animais.Add(animal);
-            _banco.SaveChanges();
 
         }
 

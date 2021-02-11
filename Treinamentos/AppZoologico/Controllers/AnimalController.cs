@@ -1,9 +1,11 @@
-﻿using Dominio.IRepositorio;
+﻿using Dominio.Entidades;
+using Dominio.IRepositorio;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using UoW.Contratos;
 
 namespace AppZoologico.Controllers
 {
@@ -11,10 +13,13 @@ namespace AppZoologico.Controllers
     {
 
         private IAnimal _animal;
+        private IUnidadeDeTrabalho _unidadeDeTrabalho;
 
-        public AnimalController(IAnimal animal)
+
+        public AnimalController(IAnimal animal, IUnidadeDeTrabalho unidadeDeTrabalho)
         {
             _animal = animal;
+            _unidadeDeTrabalho = unidadeDeTrabalho;
         }
 
         // GET: Animal
@@ -37,11 +42,12 @@ namespace AppZoologico.Controllers
 
         // POST: Animal/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(Animal animal)
         {
             try
             {
-                // TODO: Add insert logic here
+                _animal.Cadastrar(animal);
+                _unidadeDeTrabalho.Commit();
 
                 return RedirectToAction("Index");
             }
